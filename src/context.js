@@ -23,9 +23,7 @@ class ProductProvider extends Component {
             const singleItem = {...item};
             products = [...products, singleItem];
         });
-        this.setState(() => {
-            return {products};
-        });
+        this.setState({products});
     };
 
     getProduct = (id) => {
@@ -34,9 +32,7 @@ class ProductProvider extends Component {
 
     handleDetail = (id) => {
         const product = this.getProduct(id);
-        this.setState( () => {
-            return {detailProduct: product}
-        });
+        this.setState({detailProduct: product});
     };
     addToCart = (id) => {
         let tempProducts = [...this.state.products];
@@ -47,12 +43,10 @@ class ProductProvider extends Component {
         const price = product.price;
         product.total = price;
 
-        this.setState(() => {
-            return {
+        this.setState({
                 products: tempProducts,
                 cart: [...this.state.cart, product]
-            }
-        }, () => this.addTotals());
+            }, () => this.addTotals());
     };
 
     openModal = (id) => {
